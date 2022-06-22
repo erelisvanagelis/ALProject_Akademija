@@ -42,7 +42,7 @@ page 50103 "Intern Task Array"
 
                 trigger OnAction();
                 begin
-                    SetFilter("Value", '=%1', functions.FindMin());
+                    SetFilter("Value", '=%1', functions.GetMinValue());
                 end;
             }
 
@@ -52,7 +52,17 @@ page 50103 "Intern Task Array"
 
                 trigger OnAction();
                 begin
-                    SetFilter("Value", '=%1', functions.FindMax());
+                    SetFilter("Value", '=%1', functions.GetMaxValue());
+                end;
+            }
+
+            action("Duplicate Values")
+            {
+                ApplicationArea = All;
+
+                trigger OnAction();
+                begin
+                    SetFilter("Value", functions.GetDuplicateValueFilter());
                 end;
             }
         }
